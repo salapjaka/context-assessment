@@ -1,74 +1,68 @@
 import React from 'react';
 import './App.css';
 
-import { MyContext } from './context';
-
-function A () {
+class A extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      x: 0
+    };
+    this.handleXClick = this.handleXClick.bind(this);
+  }
+  handleXClick() {
+    this.setState({
+      x: this.state.x + 1
+    });
+  }
+  render() {
     return (
-      <MyContext.Consumer>
-        {context => {
-          return(
-            <div className="component-A">
-              <h1>Component A</h1>
-                context/state in Component A => {context.x} <br />
-                <B />
-                <D />
-            </div>
-          )
-        }}
-      </MyContext.Consumer>
+      <div className="component-A">
+        <h1>Component A</h1>
+        this.state.x = {this.state.x} <br />
+        this.handleXClick => {"this.setState({x: this.state.x + 1})"} <br />
+        <B x={this.state.x} onXClick={this.handleXClick} />
+        <D x={this.state.x} onXClick={this.handleXClick} />
+      </div>
     );
+  }
 }
-function B () {
-  return(
-    <MyContext.Consumer>
-      {context => {
-        return (
-          <div className="component-B">
-            <h1>Component B</h1>
-            context/state in Component B => {context.x} <br />
-            <C />
-          </div>
-        );
-      }}
-    </MyContext.Consumer>
-  )
-    
-  
-}
-function C (){
+class B extends React.Component {
+  render() {
     return (
-      <MyContext.Consumer>
-        { context => {
-          return(
-            <div className="component-C">
-              <h1>Component C</h1>
-              context/state in Component C => {context.x} <br />
-                <button onClick={context.onXClick}>{context.x}</button> onClick =>
-                context.onXClick sets the state in context
-            </div>
-          )
-        } }
-      </MyContext.Consumer>
+      <div className="component-B">
+        <h1>Component B</h1>
+        this.props.x = {this.props.x} <br />
+        this.props.onXClick => (function in A) <br />
+        <C x={this.props.x} onXClick={this.props.onXClick} />
+      </div>
     );
-
+  }
 }
-function D () {
-
+class C extends React.Component {
+  render() {
     return (
-      <MyContext.Consumer>
-      { context => {
-        return(
-          <div className="component-D">
-            <h1>Component D</h1>
-            context/state in Component D => {context.x} <br />
-            <button onClick={context.onXClick}>{context.x}</button> onClick =>
-            context.onXClick sets the state in context
-          </div>
-        )
-      } } 
-      </MyContext.Consumer>
+      <div className="component-C">
+        <h1>Component C</h1>
+        this.props.x = {this.props.x} <br />
+        this.props.onXClick => (function in B) <br />
+        <button onClick={this.props.onXClick}>{this.props.x}</button> onClick =>
+        this.props.onXClick
+      </div>
     );
+  }
+}
+class D extends React.Component {
+  render() {
+    return (
+      <div className="component-D">
+        <h1>Component D</h1>
+        this.props.x = {this.props.x} <br />
+        this.props.onXClick => (function in A) <br />
+        <button onClick={this.props.onXClick}>{this.props.x}</button> onClick =>
+        this.props.onXClick
+      </div>
+    );
+  }
 }
 
 
