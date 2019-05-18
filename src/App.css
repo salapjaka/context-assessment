@@ -31,3 +31,26 @@
     transform: rotate(360deg);
   }
 }
+
+.component-A {
+  border: 2px solid red;
+}
+
+.component-B {
+  width: 90%;
+  margin: 0 auto;
+  border: 2px solid orange;
+}
+
+.component-C {
+  width: 90%;
+  margin: 0 auto;
+  border: 2px solid blue;
+}
+
+.component-D {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 10px;
+  border: 2px solid green;
+}
