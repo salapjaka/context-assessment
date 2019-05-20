@@ -9,10 +9,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. After cloning this repo, navigate to it and run `npm i` to install dependencies.
 4. Run the scripts with `npm start`
 5. Make the necessary changes.
-6. Submit the exercise - note: this project is not made on the *master* branch 
-    6.1 git add .
-    6.2 git commit -m"solve drilling with context"
-    6.3 **`git push origin drilling`** (the branch name is `drilling`)
+6. Submit the exercise - note: this project is not made on the *master* branch <br>
+    6.1 git add .<br>
+    6.2 git commit -m"solve drilling with context"<br>
+    6.3 **`git push origin drilling`** (the branch name is `drilling`)<br>
 7. Create a pull request from your GitHub account after successfully pushing the changes.
 
 You got this! :heart::heart::heart:
