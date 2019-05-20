@@ -7,9 +7,9 @@ class A extends React.Component {
     this.state = {
       x: 0
     };
-    this.handleXClick = this.handleXClick.bind(this);
   }
-  handleXClick() {
+
+  handleXClick = () => {
     this.setState({
       x: this.state.x + 1
     });
@@ -18,8 +18,8 @@ class A extends React.Component {
     return (
       <div className="component-A">
         <h1>Component A</h1>
-        this.state.x = {this.state.x} <br />
-        this.handleXClick => {"this.setState({x: this.state.x + 1})"} <br />
+        The state in the component A is {this.state.x} <br />
+        this.handleXClick will set the state to a new value => {"this.setState({x: this.state.x + 1})"} <br />
         <B x={this.state.x} onXClick={this.handleXClick} />
         <D x={this.state.x} onXClick={this.handleXClick} />
       </div>
@@ -32,7 +32,7 @@ class B extends React.Component {
       <div className="component-B">
         <h1>Component B</h1>
         this.props.x = {this.props.x} <br />
-        this.props.onXClick => (function in A) <br />
+        this.props.onXClick => (method from component A) <br />
         <C x={this.props.x} onXClick={this.props.onXClick} />
       </div>
     );
@@ -44,7 +44,7 @@ class C extends React.Component {
       <div className="component-C">
         <h1>Component C</h1>
         this.props.x = {this.props.x} <br />
-        this.props.onXClick => (function in B) <br />
+        this.props.onXClick => (method passed from component B) <br />
         <button onClick={this.props.onXClick}>{this.props.x}</button> onClick =>
         this.props.onXClick
       </div>
@@ -57,7 +57,7 @@ class D extends React.Component {
       <div className="component-D">
         <h1>Component D</h1>
         this.props.x = {this.props.x} <br />
-        this.props.onXClick => (function in A) <br />
+        this.props.onXClick => (method from component A) <br />
         <button onClick={this.props.onXClick}>{this.props.x}</button> onClick =>
         this.props.onXClick
       </div>
